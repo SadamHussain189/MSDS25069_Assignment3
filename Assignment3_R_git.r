@@ -114,41 +114,49 @@ con <- dbConnect(
 
 ################################################ Question 6 ################################################
 
-# SQL query
-query <- "
-SELECT f.film_id, f.title
-FROM film f
-LEFT JOIN inventory i ON f.film_id = i.film_id
-LEFT JOIN rental r ON i.inventory_id = r.inventory_id
-WHERE r.rental_id IS NULL;
-"
-
-# Execute query
-unrented_films <- dbGetQuery(con, query)
-
-# View results
-print(unrented_films)
-
-################################################ Question 7 ################################################
-# # Query average rental rate by rating
+# # SQL query
 # query <- "
-# SELECT rating, AVG(rental_rate) AS avg_rental_rate
-# FROM film
-# GROUP BY rating;
+# SELECT f.film_id, f.title
+# FROM film f
+# LEFT JOIN inventory i ON f.film_id = i.film_id
+# LEFT JOIN rental r ON i.inventory_id = r.inventory_id
+# WHERE r.rental_id IS NULL;
 # "
 
-# avg_rental <- dbGetQuery(con, query)
+# # Execute query
+# unrented_films <- dbGetQuery(con, query)
 
-# # Disconnect
-# dbDisconnect(con)
+# # View results
+# print(unrented_films)
 
-# # Plot with ggplot2
-# ggplot(avg_rental, aes(x = rating, y = avg_rental_rate, fill = rating)) +
-#   geom_bar(stat = 'identity') +
-#   labs(
-#     title = 'Average Rental Rate by Film Rating',
-#     x = 'Rating',
-#     y = 'Average Rental Rate ($)'
-#   ) +
-#   theme_minimal() +
-#   theme(legend.position = "none")
+
+
+
+
+
+
+
+
+################################################ Question 7 ################################################
+# Query average rental rate by rating
+query <- "
+SELECT rating, AVG(rental_rate) AS avg_rental_rate
+FROM film
+GROUP BY rating;
+"
+
+avg_rental <- dbGetQuery(con, query)
+
+# Disconnect
+dbDisconnect(con)
+
+# Plot with ggplot2
+ggplot(avg_rental, aes(x = rating, y = avg_rental_rate, fill = rating)) +
+  geom_bar(stat = 'identity') +
+  labs(
+    title = 'Average Rental Rate by Film Rating',
+    x = 'Rating',
+    y = 'Average Rental Rate ($)'
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
