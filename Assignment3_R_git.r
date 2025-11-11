@@ -68,45 +68,46 @@ con <- dbConnect(
 # # View result
 # print(film_count)
 
-
-
-
-
 ################################################ Question 4 ################################################
 
-# Write query
-query <- "
-SELECT 
-    c.customer_id,
-    CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
-    s.store_id
-FROM customer c
-JOIN store s ON c.store_id = s.store_id;
-"
-
-# Execute query
-customers_store <- dbGetQuery(con, query)
-
-# View results
-print(customers_store)
-
-################################################ Question 5 ################################################
-# # SQL query
+# # Write query
 # query <- "
 # SELECT 
-#     p.payment_id,
-#     p.amount,
-#     p.payment_date,
-#     CONCAT(s.first_name, ' ', s.last_name) AS staff_name
-# FROM payment p
-# JOIN staff s ON p.staff_id = s.staff_id;
+#     c.customer_id,
+#     CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+#     s.store_id
+# FROM customer c
+# JOIN store s ON c.store_id = s.store_id;
 # "
 
 # # Execute query
-# payments_info <- dbGetQuery(con, query)
+# customers_store <- dbGetQuery(con, query)
 
-# # View first few rows
-# head(payments_info)
+# # View results
+# print(customers_store)
+
+
+
+
+
+
+################################################ Question 5 ################################################
+# SQL query
+query <- "
+SELECT 
+    p.payment_id,
+    p.amount,
+    p.payment_date,
+    CONCAT(s.first_name, ' ', s.last_name) AS staff_name
+FROM payment p
+JOIN staff s ON p.staff_id = s.staff_id;
+"
+
+# Execute query
+payments_info <- dbGetQuery(con, query)
+
+# View first few rows
+head(payments_info)
 
 ################################################ Question 6 ################################################
 
