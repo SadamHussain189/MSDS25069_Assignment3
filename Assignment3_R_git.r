@@ -53,40 +53,42 @@ con <- dbConnect(
 # # View results
 # print(avg_rental)
 
-
-
 ################################################ Question 3 ################################################
-# Write query
-query <- "
-SELECT l.name AS language_name, COUNT(f.film_id) AS total_films
-FROM film f
-JOIN language l ON f.language_id = l.language_id
-GROUP BY l.name;
-"
-
-# Execute query
-film_count <- dbGetQuery(con, query)
-
-# View result
-print(film_count)
-
-################################################ Question 4 ################################################
-
 # # Write query
 # query <- "
-# SELECT 
-#     c.customer_id,
-#     CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
-#     s.store_id
-# FROM customer c
-# JOIN store s ON c.store_id = s.store_id;
+# SELECT l.name AS language_name, COUNT(f.film_id) AS total_films
+# FROM film f
+# JOIN language l ON f.language_id = l.language_id
+# GROUP BY l.name;
 # "
 
 # # Execute query
-# customers_store <- dbGetQuery(con, query)
+# film_count <- dbGetQuery(con, query)
 
-# # View results
-# print(customers_store)
+# # View result
+# print(film_count)
+
+
+
+
+
+################################################ Question 4 ################################################
+
+# Write query
+query <- "
+SELECT 
+    c.customer_id,
+    CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+    s.store_id
+FROM customer c
+JOIN store s ON c.store_id = s.store_id;
+"
+
+# Execute query
+customers_store <- dbGetQuery(con, query)
+
+# View results
+print(customers_store)
 
 ################################################ Question 5 ################################################
 # # SQL query
