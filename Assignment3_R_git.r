@@ -23,58 +23,35 @@ con <- dbConnect(
 
 
 ################################################ Question 1 ################################################
-query <- "
-SELECT title, rating, rental_duration
-FROM film
-WHERE rating = 'PG' AND rental_duration > 5;
-"
+# query <- "
+# SELECT title, rating, rental_duration
+# FROM film
+# WHERE rating = 'PG' AND rental_duration > 5;
+# "
 
-# Execute query and get results as a dataframe
-films_pg <- dbGetQuery(con, query)
+# # Execute query and get results as a dataframe
+# films_pg <- dbGetQuery(con, query)
 
-# View results
-print(films_pg)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# # View results
+# print(films_pg)
 
 
 
 
 
 ################################################ Question 2 ################################################
-# # Write the query
-# query <- "
-# SELECT rating, AVG(rental_rate) AS avg_rental_rate
-# FROM film
-# GROUP BY rating;
-# "
+# Write the query
+query <- "
+SELECT rating, AVG(rental_rate) AS avg_rental_rate
+FROM film
+GROUP BY rating;
+"
 
-# # Execute query
-# avg_rental <- dbGetQuery(con, query)
+# Execute query
+avg_rental <- dbGetQuery(con, query)
 
-# # View results
-# print(avg_rental)
+# View results
+print(avg_rental)
 
 ################################################ Question 3 ################################################
 # # Write query
