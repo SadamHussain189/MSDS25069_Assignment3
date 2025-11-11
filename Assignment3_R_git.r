@@ -86,45 +86,48 @@ con <- dbConnect(
 # # View results
 # print(customers_store)
 
-
-
-
-
-
 ################################################ Question 5 ################################################
-# SQL query
-query <- "
-SELECT 
-    p.payment_id,
-    p.amount,
-    p.payment_date,
-    CONCAT(s.first_name, ' ', s.last_name) AS staff_name
-FROM payment p
-JOIN staff s ON p.staff_id = s.staff_id;
-"
-
-# Execute query
-payments_info <- dbGetQuery(con, query)
-
-# View first few rows
-head(payments_info)
-
-################################################ Question 6 ################################################
-
 # # SQL query
 # query <- "
-# SELECT f.film_id, f.title
-# FROM film f
-# LEFT JOIN inventory i ON f.film_id = i.film_id
-# LEFT JOIN rental r ON i.inventory_id = r.inventory_id
-# WHERE r.rental_id IS NULL;
+# SELECT 
+#     p.payment_id,
+#     p.amount,
+#     p.payment_date,
+#     CONCAT(s.first_name, ' ', s.last_name) AS staff_name
+# FROM payment p
+# JOIN staff s ON p.staff_id = s.staff_id;
 # "
 
 # # Execute query
-# unrented_films <- dbGetQuery(con, query)
+# payments_info <- dbGetQuery(con, query)
 
-# # View results
-# print(unrented_films)
+# # View first few rows
+# head(payments_info)
+
+
+
+
+
+
+
+
+
+################################################ Question 6 ################################################
+
+# SQL query
+query <- "
+SELECT f.film_id, f.title
+FROM film f
+LEFT JOIN inventory i ON f.film_id = i.film_id
+LEFT JOIN rental r ON i.inventory_id = r.inventory_id
+WHERE r.rental_id IS NULL;
+"
+
+# Execute query
+unrented_films <- dbGetQuery(con, query)
+
+# View results
+print(unrented_films)
 
 ################################################ Question 7 ################################################
 # # Query average rental rate by rating
