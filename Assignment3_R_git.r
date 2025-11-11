@@ -40,33 +40,35 @@ con <- dbConnect(
 
 
 ################################################ Question 2 ################################################
-# Write the query
-query <- "
-SELECT rating, AVG(rental_rate) AS avg_rental_rate
-FROM film
-GROUP BY rating;
-"
-
-# Execute query
-avg_rental <- dbGetQuery(con, query)
-
-# View results
-print(avg_rental)
-
-################################################ Question 3 ################################################
-# # Write query
+# # Write the query
 # query <- "
-# SELECT l.name AS language_name, COUNT(f.film_id) AS total_films
-# FROM film f
-# JOIN language l ON f.language_id = l.language_id
-# GROUP BY l.name;
+# SELECT rating, AVG(rental_rate) AS avg_rental_rate
+# FROM film
+# GROUP BY rating;
 # "
 
 # # Execute query
-# film_count <- dbGetQuery(con, query)
+# avg_rental <- dbGetQuery(con, query)
 
-# # View result
-# print(film_count)
+# # View results
+# print(avg_rental)
+
+
+
+################################################ Question 3 ################################################
+# Write query
+query <- "
+SELECT l.name AS language_name, COUNT(f.film_id) AS total_films
+FROM film f
+JOIN language l ON f.language_id = l.language_id
+GROUP BY l.name;
+"
+
+# Execute query
+film_count <- dbGetQuery(con, query)
+
+# View result
+print(film_count)
 
 ################################################ Question 4 ################################################
 
