@@ -18,57 +18,49 @@ con <- dbConnect(
   password = "s"
 )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # dbListTables(con)  # Lists all tables in Sakila
 
+
+
 ################################################ Question 1 ################################################
-# query <- "
-# SELECT title, rating, rental_duration
-# FROM film
-# WHERE rating = 'PG' AND rental_duration > 5;
-# "
+query <- "
+SELECT title, rating, rental_duration
+FROM film
+WHERE rating = 'PG' AND rental_duration > 5;
+"
 
-# # Execute query and get results as a dataframe
-# films_pg <- dbGetQuery(con, query)
+# Execute query and get results as a dataframe
+films_pg <- dbGetQuery(con, query)
 
-# # View results
-# print(films_pg)
+# View results
+print(films_pg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ################################################ Question 2 ################################################
 # # Write the query
